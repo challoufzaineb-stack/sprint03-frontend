@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Ajouter un Voyage :</h2>
+  <form>
+    <div class="form-group" hidden>
+      <label>ID Voyage</label>
+      <input type="number" [(ngModel)]="newVoyage.idVoyage" name="idVoyage" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Destination</label>
+      <input type="text" [(ngModel)]="newVoyage.destination" name="destination" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Prix Voyage</label>
+      <input type="number" [(ngModel)]="newVoyage.prix" name="prix" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Date Départ</label>
+      <input type="date" [(ngModel)]="newVoyage.dateDepart" name="dateDepart" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Type</label>
+      <select class="form-control form-control-lg" id="idType" name="idType" [(ngModel)]="newIdType">
+        @for(t of types; track t.idType) {
+          <option [value]="t.idType"> {{t.nomType}} </option>
+        }
+      </select>
+    </div>
+
+    <button type="submit" (click)="addVoyage()" class="btn btn-success mt-3">Ajouter</button>
+  </form>
+</div>

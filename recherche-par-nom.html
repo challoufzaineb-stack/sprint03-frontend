@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-4">
+                <label class="form-label fw-bold">Rechercher par destination :</label>
+                <input type="text" class="form-control form-control-lg" 
+                       [(ngModel)]="nomVoyage" 
+                       (ngModelChange)="rechercherVoyages()" 
+                       placeholder="Tapez un nom de destination...">
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Destination</th>
+                        <th>Prix</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (voyage of voyages; track voyage.idVoyage) {
+                        <tr>
+                            <td>{{ voyage.idVoyage }}</td>
+                            <td>{{ voyage.destination }}</td>
+                            <td>{{ voyage.prix }}</td>
+                            @if(voyage.type) {
+                                <td>{{ voyage.type.nomType }}</td>
+                            } @else {
+                                <td>PAS DE TYPE</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

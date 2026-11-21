@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+                <label class="form-label fw-bold">Types :</label>
+                <select class="form-control form-control-lg" id="idType" name="idType" [(ngModel)]="IdType"
+                    (ngModelChange)="onChange()">
+                    @for(t of types; track t.idType) {
+                    <option [value]="t.idType">{{ t.nomType }}</option>
+                    }
+                </select>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Destination</th>
+                        <th>Prix</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (voyage of voyages; track voyage.idVoyage) {
+                        <tr>
+                            <td>{{ voyage.idVoyage }}</td>
+                            <td>{{ voyage.destination }}</td>
+                            <td>{{ voyage.prix }}</td>
+                            @if(voyage.type) {
+                                <td>{{ voyage.type.nomType }}</td>
+                            } @else {
+                                <td>PAS DE TYPE</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

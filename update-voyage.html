@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Modifier un Voyage :</h2>
+  <form *ngIf="currentVoyage">
+    
+    <div class="form-group">
+      <label>ID Voyage</label>
+      <input type="text" [(ngModel)]="currentVoyage.idVoyage" name="idVoyage" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Destination</label>
+      <input type="text" [(ngModel)]="currentVoyage.destination" name="destination" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Prix Voyage</label>
+      <input type="number" [(ngModel)]="currentVoyage.prix" name="prix" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Date Départ</label>
+      <input type="date" [(ngModel)]="currentVoyage.dateDepart" name="dateDepart" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Type</label>
+      <select class="form-control form-control-lg" id="updatedTypeId" name="updatedTypeId" [(ngModel)]="updatedTypeId">
+        @for (t of types; track t.idType) {
+          <option [value]="t.idType">{{t.nomType}}</option>
+        }
+      </select>
+    </div>
+
+    <button type="submit" (click)="updateVoyage()" class="btn btn-success mt-3">Modifier</button>
+  </form>
+</div>
